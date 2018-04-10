@@ -46,6 +46,7 @@ $(document).ready(function () {
         var minutesAway = frequency - timeReminder;
         var nextTime = moment().add(minutesAway, 'minutes');
         var nextArrival = moment(nextTime).format('hh:mm A');
+        // console.log(nextArrival);
 
         //Create local temporary object for holding data
         var newTrain = {
@@ -77,7 +78,20 @@ $(document).ready(function () {
         var trainAway = snapshot.val().minutesAway;
 
         //Add each data to table
-        $('#train-table').append('<tr><td>'+trainName +'</td><td>'+trainDest+'</td><td>'+trainFreq+'</td><td>'+trainNextTime+'</td><td>'+trainAway+'</td></tr>');
-        
-    })
+        $('#train-table').append(
+        '<tr id = '+'"'+snapshot.key()+'"'+'><td>' + trainName + '</td><td>' 
+        + trainDest + '</td><td>' 
+        + trainFreq + '</td><td>' 
+        + trainNextTime + '</td><td>' 
+        + trainAway + '</td><td>'
+        +"<input type='submit' value='edit' class='edit-train btn btn-primary' >"+'</td><td>' 
+        +"<input type='submit' value ='remove' class='remove-train btn btn-primary'>"+'</td></tr>'
+        );
+       
+    });
+    $(document).on('click','.remove-train',function () {
+        $(this).closest('tr').remove();
+        var getKey = $(this).parent().parent().attr('id');
+        database.child(getKey).remove();
+    });
 })
