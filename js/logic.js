@@ -79,19 +79,19 @@ $(document).ready(function () {
 
         //Add each data to table
         $('#train-table').append(
-        '<tr id = '+'"'+snapshot.key()+'"'+'><td>' + trainName + '</td><td>' 
+        '<tr><td>' + trainName + '</td><td>' 
         + trainDest + '</td><td>' 
         + trainFreq + '</td><td>' 
         + trainNextTime + '</td><td>' 
         + trainAway + '</td><td>'
-        +"<input type='submit' value='edit' class='edit-train btn btn-primary' >"+'</td><td>' 
-        +"<input type='submit' value ='remove' class='remove-train btn btn-primary'>"+'</td></tr>'
+        +"<input type='submit' value='Update' class='edit-train btn btn-primary' >"+'</td><td>' 
+        +"<input type='submit' value ='Remove' class='remove-train btn btn-primary'>"+'</td></tr>'
         );
        
     });
     $(document).on('click','.remove-train',function () {
         $(this).closest('tr').remove();
-        var getKey = $(this).parent().parent().attr('id');
+        var getKey = $(this).attr('id');
         database.child(getKey).remove();
     });
 })
