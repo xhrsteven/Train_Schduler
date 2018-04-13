@@ -28,7 +28,7 @@ var database = firebase.database();
     
 // })
 //Capture Button Click
-$(document).ready(function () {
+
 
     $('#add-train').on('click',function(e){
         //prevent the submit button from trying to submit a form when clicked
@@ -84,8 +84,9 @@ $(document).ready(function () {
         + trainFreq + '</td><td>' 
         + trainNextTime + '</td><td>' 
         + trainAway + '</td><td>'
-        +"<input type='submit' value='Update' class='edit-train btn btn-primary' >"+'</td><td>' 
-        +"<input type='submit' value ='Remove' class='remove-train btn btn-primary'>"+'</td></tr>'
+        // +"<button type='button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>"+'Update'+"</button>"+'</td><td>' 
+        // +"<input type='submit' value ='Remove' class='remove-train btn btn-primary'>"
+        +'</td></tr>'
         );
        
     });
@@ -94,4 +95,4 @@ $(document).ready(function () {
         var getKey = $(this).attr('id');
         database.child(getKey).remove();
     });
-})
+
